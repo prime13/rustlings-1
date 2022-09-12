@@ -7,16 +7,40 @@
 // Consider what you can add to the Licensed trait.
 // Execute `rustlings hint traits3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+pub trait Licensed: Versionable {
+    fn licensing_info(&self) -> String{
+        "Some information".to_string()
+    }
+}
 
-pub trait Licensed {
-    fn licensing_info(&self) -> String;
+pub trait Versionable {
+    fn get_version_as_string(&self) ->String;
+}
+
+impl Versionable for SomeSoftware {
+    fn get_version_as_string(&self) -> String {
+        format!("{}", self.version_number)
+    }
+}
+
+impl Versionable for OtherSoftware {
+    fn get_version_as_string(&self) -> String {
+        self.version_number.to_string()
+    }
 }
 
 struct SomeSoftware {
     version_number: i32,
 }
 
+impl SomeSoftware {
+    fn get_version_as_string(&self  ) -> String { format!("{}", self.version_number)}
+}
+impl OtherSoftware {
+    fn get_version_as_string(&self) -> String {
+        self.version_number.to_string()
+    }
+}
 struct OtherSoftware {
     version_number: String,
 }
