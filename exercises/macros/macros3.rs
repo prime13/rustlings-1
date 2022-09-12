@@ -1,17 +1,16 @@
-// macros3.rs
-// Make me compile, without taking the macro out of the module!
-// Execute `rustlings hint macros3` or use the `hint` watch subcommand for a hint.
+// macros4.rs
+// Execute `rustlings hint macros4` or use the `hint` watch subcommand for a hint.
 
-
-mod macros {
-    #[macro_export]
-    macro_rules! my_macro {
-        () => {
-            println!("Check out my macro!");
-        };
+macro_rules! my_macro {
+    () => {
+        println!("Check out my macro!");
+    };
+    ($val:expr) => {
+        println!("Look at this other macro: {}", $val);
     }
 }
 
 fn main() {
     my_macro!();
+    my_macro!(7777);
 }
